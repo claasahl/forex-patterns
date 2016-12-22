@@ -11,11 +11,14 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
+			<version>${version-junit}</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
 	<build>
 		<finalName>forex-patterns</finalName>
 	</build>
+	<properties>
+		<version-junit>3.8.1</version-junit>
+	</properties>
 </project>
