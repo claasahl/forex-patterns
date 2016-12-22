@@ -46,6 +46,9 @@
 					<stopKey>stopKey</stopKey>
 					<stopPort>9999</stopPort>
 					<stopWait>30</stopWait>
+					<webApp>
+						<contextPath>${application-context-path}</contextPath>
+					</webApp>
 				</configuration>
 				<executions>
 					<execution>
@@ -75,6 +78,7 @@
 		<version-jetty>9.2.20.v20161216</version-jetty>
 		<version-java>1.8</version-java>
 		<version-maven-compiler>3.5.1</version-maven-compiler>
+		<application-context-path>/patterns</application-context-path>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 </project>
