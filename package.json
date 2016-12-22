@@ -1,0 +1,8 @@
+{
+  "name": "forex-patterns",
+  "description": "TBD",
+  "version": "0.0.1-SNAPSHOT",
+  "devDependencies": {
+    "bootstrap": "4.0.0-alpha.5"
+  }
+}
