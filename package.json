@@ -2,6 +2,8 @@
   "name": "forex-patterns",
   "description": "TBD",
   "version": "0.0.1-SNAPSHOT",
+  "license": "GPL-3.0",
+  "repository": "https://github.com/claasahl/forex-patterns.git",
   "devDependencies": {
     "bootstrap": "4.0.0-alpha.5"
   }
