@@ -43,7 +43,6 @@
 				<artifactId>jetty-maven-plugin</artifactId>
 				<version>${version-jetty}</version>
 				<configuration>
-					<scanIntervalSeconds>10</scanIntervalSeconds>
 					<stopKey>stopKey</stopKey>
 					<stopPort>9999</stopPort>
 					<stopWait>30</stopWait>
