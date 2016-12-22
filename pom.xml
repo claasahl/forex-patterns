@@ -66,6 +66,12 @@
 				</executions>
 			</plugin>
 			<plugin>
+				<!-- https://github.com/mulesoft/raml-for-jax-rs/blob/master/maven-plugin.md -->
+				<groupId>org.raml.plugins</groupId>
+				<artifactId>raml-jaxrs-maven-plugin</artifactId>
+				<version>${version-jax-rs-raml}</version>
+			</plugin>
+			<plugin>
 				<!-- https://www.eclipse.org/jetty/documentation/current/jetty-maven-plugin.html -->
 				<groupId>org.eclipse.jetty</groupId>
 				<artifactId>jetty-maven-plugin</artifactId>
@@ -106,6 +112,7 @@
 		<version-jetty>9.2.20.v20161216</version-jetty>
 		<version-frontend>1.3</version-frontend>
 		<version-node-js>v7.3.0</version-node-js>
+		<version-jax-rs-raml>1.3.4</version-jax-rs-raml>
 		<version-java>1.8</version-java>
 		<version-maven-compiler>3.5.1</version-maven-compiler>
 		<application-context-path>/patterns</application-context-path>
