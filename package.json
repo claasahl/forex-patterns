@@ -6,9 +6,11 @@
 	"repository": "https://github.com/claasahl/forex-patterns.git",
 	"devDependencies": {
 		"jshint": "latest",
+		"rimraf": "latest",
 		"bootstrap": "4.0.0-alpha.5"
 	},
 	"scripts": {
+		"clean": "rimraf src/main/resources/assets",
 		"lint": "jshint *.js",
 		"postinstall": "npm run lint"
 	}
