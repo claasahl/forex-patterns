@@ -5,7 +5,7 @@ var src = process.argv[2];
 var dst = process.argv[3];
 var logError = function(error) {
 	if (error)
-		console.log(err);
+		console.log(error);
 };
 
 // source can either be a filename, url, or parsed RAML object
