@@ -1,0 +1,188 @@
+#%RAML 1.0
+title: A CRUD API for licenses.
+version: v1
+mediaType: application/JSON
+# run API tests within maven (there is a plugin that deploys the WAR and starts tomcat; keyword: integeration tests)
+# http://stackoverflow.com/questions/25865251/how-to-organize-full-build-pipeline-with-gulp-maven-and-jenkins-all-the-way-to
+#
+# http://blog.mwaysolutions.com/2014/06/05/10-best-practices-for-better-restful-api/
+# http://www.baeldung.com/simple-raml-with-resource-types-and-traits
+# 500: internal server error
+# 401: unauthorized
+# 403: forbidden
+types:
+  LicenseNew:
+    properties:
+      name:
+        description: The name of the license.
+        type: string
+      uri:
+        description: A URI to the license.
+        type: string
+    example:
+      name: MIT
+      uri: https://en.wikipedia.org/wiki/MIT_License
+  License:
+    type: LicenseNew
+    properties:
+      id:
+        description: The unique identifier of a license.
+        type: integer
+    example:
+      id: 1
+      name: MIT
+      uri: https://en.wikipedia.org/wiki/MIT_License
+  Licenses:
+    type: License[]
+    uniqueItems: true
+    example:
+      -
+        id: 1
+        name: MIT
+        uri: https://en.wikipedia.org/wiki/MIT_License
+      -
+        id: 2
+        name: Apache License, Version 2.0
+        uri: https://www.apache.org/licenses/LICENSE-2.0
+resourceTypes:
+  # consider to split this into two types: collection-readable and collection-writable
+  collection:
+    usage: This resourceType should be used for any collection of items
+    description: The collection of <<resourcePathName>>
+    get:
+      description: Retrieve all <<resourcePathName>>, optionally filtered
+      responses:
+        200:
+          description: If the <<resourcePathName>> were successfully retrieved.
+          body: <<resourcePathName | !uppercamelcase>>
+    post:
+      description: Create a new <<resourcePathName | !singularize>>
+      body: <<resourcePathName | !singularize | !uppercamelcase>>New
+      responses:
+        201:
+          description: If the <<resourcePathName | !singularize>> was successfully created.
+          headers:
+            Location:
+              example: /<<resourcePathName>>/<<exampleId>>
+          body: <<resourcePathName | !singularize | !uppercamelcase>>
+        400:
+          description: If the supplied data is invalid (e.g. missing data or incorrect data types).
+        409:
+          description: If the <<resourcePathName | !singularize>> already exists.
+  member:
+    usage: This resourceType should be used for items in a collection
+    description: The item <<resourcePathName | !singularize>>
+    get:
+      description: Retrieve the identified <<resourcePathName | !singularize>>.
+      responses:
+        200:
+          description: If the identified <<resourcePathName | !singularize>> was retrieved.
+          body: <<resourcePathName | !singularize | !uppercamelcase>>
+        404:
+          description: If the <<resourcePathName | !singularize>> was not found.
+    put:
+      description: Update the identified <<resourcePathName | !singularize>>.
+      body: <<resourcePathName | !singularize | !uppercamelcase>>
+      responses:
+        204:
+          description: If the identified <<resourcePathName | !singularize>> was updated.
+        400:
+          description: If the supplied data is invalid (e.g. missing data or incorrect data types).
+        404:
+          description: If the <<resourcePathName | !singularize>> was not found.
+    delete:
+      description: Delete the identified <<resourcePathName | !singularize>>.
+      responses:
+        204:
+          description: If the identified <<resourcePathName | !singularize>> was deleted.
+        404:
+          description: If the <<resourcePathName | !singularize>> was not found.
+traits:
+  orphanable:
+    queryParameters:
+      orphaned?:
+        type: boolean
+        description: If set to true, then only unreferenced <<resourcePathName>> are considered. If set to false, then only referenced <<resourcePathName>> are considered. If not present, then all <<resourcePathName>> (i.e. referenced and unreferenced) are considered.
+  searchable:
+    queryParameters:
+      query?:
+        description: |
+          Search collection with the specified criteria.
+
+          The value of this parameter resembles a two-dimensional _JSON array_ with the listed items.
+
+          ```JSON
+          [["field1","value1","operator1"],["field2","value2","operator2"],...,["fieldN","valueN","operatorN"]]
+          ```
+
+          * _fieldN_ may be any of these fields: <<fields>>
+          * _valueN_ is the value being search for
+          * _operatorN_ may be one of these search operators: _like_, _eq_, _gt_ and _lt_
+        type: string
+        example: <<example>>
+    responses:
+      400: # if the specified value for "query" is invalid.
+  sortable:
+    queryParameters:
+      sort?:
+        description: |
+          Sort collection by the specified field(s).
+
+          The value of this parameter resembles a two-dimensional _JSON array_ with the listed items.
+
+          ```JSON
+          [["field1","order1"],["field2","order2"],...,["fieldN","orderN"]]
+          ```
+
+          * _fieldN_ may be any of these fields: <<fields>>
+          * _orderN_ may be either _asc_ or _desc_
+        type: string
+        example: <<example>>
+    responses:
+      400: # if the specified value for "sort" is invalid.
+  pageable:
+    queryParameters:
+      offset?:
+        description: Skip over a number of elements by specifying an offset value for the query
+        type: integer
+        default: 0
+      limit?:
+        description: Limit the number of elements on the response
+        type: integer
+        default: 10
+    responses:
+      200:
+        headers:
+          Link:
+            description: Holds links to the first, previous, next and last page.
+            #example: |
+            #  <https://blog.mwaysolutions.com/sample/api/v1/cars?offset=15&limit=5>; rel="next",
+            #  <https://blog.mwaysolutions.com/sample/api/v1/cars?offset=50&limit=3>; rel="last",
+            #  <https://blog.mwaysolutions.com/sample/api/v1/cars?offset=0&limit=5>; rel="first",
+            #  <https://blog.mwaysolutions.com/sample/api/v1/cars?offset=5&limit=5>; rel="prev",
+            # todo: include example (http://blog.mwaysolutions.com/2014/06/05/10-best-practices-for-better-restful-api/)
+/licenses:
+  type:
+    collection:
+      exampleId: 42
+  is:
+    - searchable:
+        fields: _id_ and _name_
+        example: |
+          [["name","Apache","like"]]
+    - sortable:
+        fields: _id_ and _name_
+        example: |
+          [["name","desc"]]
+    - pageable:
+    - orphanable:
+  get:
+    responses:
+      400:
+        description: If one or more of the supplied query parameters are invalid (e.g. missing data or incorrect data types).
+  /{id}:
+    type: member
+    uriParameters:
+      id:
+        description: The unique identifier of a license.
+        type: integer
