@@ -9,7 +9,7 @@
 		"rimraf": "latest",
 		"bootstrap": "4.0.0-alpha.5",
 		"stylus": "latest",
-		"jade": "latest",
+		"pug": "latest",
 		"browserify": "latest",
 		"watch": "latest",
 		"parallelshell": "latest",
@@ -26,7 +26,7 @@
 		"watch:js": "watch 'npm run build:js' assets/scripts/",
 		"build:css": "stylus assets/styles/main.styl > src/main/webapp/assets/main.css",
 		"watch:css": "watch 'npm run build:css' assets/styles/",
-		"build:html": "jade assets/html/index.jade > src/main/webapp/index.html",
+		"build:html": "pug assets/html/index.pug > src/main/webapp/index.html",
 		"watch:html": "watch 'npm run build:html' assets/html",
 		"build": "npm run build:js && npm run build:css && npm run build:html",
 		"build:watch": "parallelshell 'npm run watch:js' 'npm run watch:css' 'npm run watch:html'"
