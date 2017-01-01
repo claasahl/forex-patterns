@@ -12,12 +12,16 @@
 		"jade": "latest",
 		"browserify": "latest",
 		"watch": "latest",
-		"parallelshell": "latest"
+		"parallelshell": "latest",
+		"raml2html": "latest",
+		"write": "latest"
 	},
 	"scripts": {
 		"clean": "rimraf src/main/webapp/assets",
 		"lint": "jshint assets/scripts/**.js",
 		"prebuild:js": "npm run lint",
+		"build:api:doc": "node assets/scripts/generate_api_doc.js",
+		"watch:api:doc": "watch 'npm run build:api:doc' assets/raml/",
 		"build:js": "browserify assets/scripts/main.js > src/main/webapp/assets/main.js",
 		"watch:js": "watch 'npm run build:js' assets/scripts/",
 		"build:css": "stylus assets/styles/main.styl > src/main/webapp/assets/main.css",
