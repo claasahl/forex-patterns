@@ -1,15 +1,9 @@
-const
-raml2html = require('raml2html');
-const
-writeFile = require('write');
-const
-configWithDefaultTemplates = raml2html.getDefaultConfig();
-const
-src = process.argv[2];
-const
-dst = process.argv[3];
-const
-logError = function(error) {
+var raml2html = require('raml2html');
+var writeFile = require('write');
+var configWithDefaultTemplates = raml2html.getDefaultConfig();
+var src = process.argv[2];
+var dst = process.argv[3];
+var logError = function(error) {
 	if (error)
 		console.log(err);
 };
