@@ -19,8 +19,9 @@
 	"scripts": {
 		"clean": "rimraf src/main/webapp/assets",
 		"lint": "jshint assets/scripts/",
+		"prebuild": "npm run clean",
 		"prebuild:js": "npm run lint",
-		"build:api:doc": "node assets/scripts/generate_api_doc.js",
+		"build:api:doc": "node assets/scripts/generate_api_doc.js assets/raml/licenses.raml assets/html/licenses.html",
 		"watch:api:doc": "watch 'npm run build:api:doc' assets/raml/",
 		"build:js": "browserify assets/scripts/main.js > src/main/webapp/assets/main.js",
 		"watch:js": "watch 'npm run build:js' assets/scripts/",
@@ -28,7 +29,7 @@
 		"watch:css": "watch 'npm run build:css' assets/styles/",
 		"build:html": "pug assets/html/index.pug > src/main/webapp/index.html",
 		"watch:html": "watch 'npm run build:html' assets/html",
-		"build": "npm run build:js && npm run build:css && npm run build:html",
-		"build:watch": "parallelshell 'npm run watch:js' 'npm run watch:css' 'npm run watch:html'"
+		"build": "npm run build:api:doc && npm run build:js && npm run build:css && npm run build:html",
+		"build:watch": "parallelshell 'npm run watch:api:doc' 'npm run watch:js' 'npm run watch:css' 'npm run watch:html'"
 	}
 }
