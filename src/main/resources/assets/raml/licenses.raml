@@ -165,18 +165,18 @@ traits:
   type:
     collection:
       exampleId: 42
-  is:
-    - searchable:
-        fields: _id_ and _name_
-        example: |
-          [["name","Apache","like"]]
-    - sortable:
-        fields: _id_ and _name_
-        example: |
-          [["name","desc"]]
-    - pageable:
-    - orphanable:
   get:
+    is:
+      - searchable:
+          fields: _id_ and _name_
+          example: |
+            [["name","Apache","like"]]
+      - sortable:
+          fields: _id_ and _name_
+          example: |
+            [["name","desc"]]
+      - pageable:
+      - orphanable:
     responses:
       400:
         description: If one or more of the supplied query parameters are invalid (e.g. missing data or incorrect data types).
