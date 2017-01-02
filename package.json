@@ -14,14 +14,15 @@
 		"watch": "latest",
 		"parallelshell": "latest",
 		"raml2html": "latest",
-		"write": "latest"
+		"write": "latest",
+		"command-line-args": "latest"
 	},
 	"scripts": {
 		"clean": "rimraf src/main/webapp/assets",
 		"lint": "jshint src/main/resources/assets/scripts/",
 		"prebuild": "npm run clean",
 		"prebuild:js": "npm run lint",
-		"build:api:doc": "node src/main/resources/assets/scripts/generate_api_doc.js src/main/resources/assets/raml/licenses.raml src/main/resources/assets/html/licenses.html",
+		"build:api:doc": "node src/main/resources/assets/scripts/generate_api_doc.js --src src/main/resources/assets/raml/licenses.raml --dst src/main/resources/assets/html/licenses.html",
 		"watch:api:doc": "watch \"npm run build:api:doc\" src/main/resources/assets/raml/",
 		"build:js": "browserify src/main/resources/assets/scripts/main.js > src/main/webapp/assets/main.js",
 		"watch:js": "watch 'npm run build:js' src/main/resources/assets/scripts/",
