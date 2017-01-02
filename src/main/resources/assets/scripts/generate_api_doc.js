@@ -2,11 +2,13 @@
 var raml2html = require('raml2html');
 var writeFile = require('write');
 var cmdArgs = require('command-line-args');
+var exit = require('exit');
 
-// preliminary function for logging errors 
+// called in case of an error 
 var logError = function(error) {
 	if (error)
-		console.log(error);
+		console.error(error);
+	exit(-1);
 };
 
 // retrieving command line arguments

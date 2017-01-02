@@ -15,7 +15,8 @@
 		"parallelshell": "latest",
 		"raml2html": "latest",
 		"write": "latest",
-		"command-line-args": "latest"
+		"command-line-args": "latest",
+		"exit": "lastest"
 	},
 	"scripts": {
 		"clean": "rimraf src/main/webapp/assets",
