@@ -125,6 +125,7 @@
 								<copy todir="${application-public-assets}">
 									<fileset dir="${node-modules}/tether/dist/" />
 									<fileset dir="${node-modules}/bootstrap/dist/" />
+									<fileset dir="${application-private-assets}" />
 								</copy>
 								<copy todir="${application-public-assets}/js">
 									<fileset dir="${node-modules}/jquery/dist/" />
