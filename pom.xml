@@ -143,7 +143,7 @@
 	<properties>
 		<version-junit>4.12</version-junit>
 		<version-find-bugs>3.0.4</version-find-bugs>
-		<version-jetty>9.2.20.v20161216</version-jetty>
+		<version-jetty>9.4.0.v20161208</version-jetty>
 		<version-frontend>1.3</version-frontend>
 		<version-node-js>v7.3.0</version-node-js>
 		<version-jax-servlet>3.1.0</version-jax-servlet>
@@ -151,7 +151,7 @@
 		<version-jax-rs-raml>1.3.4</version-jax-rs-raml>
 		<version-java>1.8</version-java>
 		<version-maven-antrun>1.8</version-maven-antrun>
-		<version-maven-compiler>3.5.1</version-maven-compiler>
+		<version-maven-compiler>3.6.0</version-maven-compiler>
 		<node-modules>node_modules</node-modules>
 		<application-context-path>/patterns</application-context-path>
 		<application-public-assets>src/main/webapp/assets</application-public-assets>
