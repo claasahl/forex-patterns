@@ -5,18 +5,6 @@
 	"license": "LGPL-3.0",
 	"repository": "https://github.com/claasahl/forex-patterns.git",
 	"devDependencies": {
-		"package": "1.0.1",
-		"utilities": "1.0.4",
 		"bootstrap": "4.0.0-alpha.5"
-	},
-	"scripts": {
-		"clean": "node src/main/resources/assets/scripts/clean.js",
-		"postinstall": "npm run clean && node src/main/resources/assets/scripts/copy_bootstrap.js"
-	},
-	"config": {
-		"baseDir": {
-			"public": "src/main/webapp/assets",
-			"private": "src/main/resources/assets"
-		}
 	}
 }
