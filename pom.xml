@@ -28,7 +28,6 @@
 	<build>
 		<!-- do not forget: plugin for generating JAX-RS from RAML -->
 		<!-- do not forget: plugin for testing RAML specification -->
-		<!-- do not forget: plugin for generating RAML API documentation -->
 		<finalName>forex-patterns</finalName>
 		<plugins>
 			<plugin>
