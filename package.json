@@ -10,7 +10,8 @@
 		"bootstrap": "4.0.0-alpha.5"
 	},
 	"scripts": {
-		"clean": "node src/main/resources/assets/scripts/clean.js"
+		"clean": "node src/main/resources/assets/scripts/clean.js",
+		"postinstall": "npm run clean && node src/main/resources/assets/scripts/copy_bootstrap.js"
 	},
 	"config": {
 		"baseDir": {
