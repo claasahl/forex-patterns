@@ -126,3 +126,6 @@ jspm_packages
 # Custom
 # nodejs
 node
+
+# generated assets
+src/main/webapp/assets
