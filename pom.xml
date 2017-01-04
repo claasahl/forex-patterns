@@ -144,6 +144,7 @@
 						<phase>compile</phase>
 						<configuration>
 							<target>
+								<!-- https://ant.apache.org/manual/index.html -->
 								<delete dir="${application-public-assets}" />
 								<copy todir="${application-public-assets}">
 									<fileset dir="${node-modules}/tether/dist/" />
