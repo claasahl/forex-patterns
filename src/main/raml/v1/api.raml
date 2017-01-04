@@ -45,12 +45,14 @@ resourceTypes:
             description: If the identified <<resourcePathName | !singularize>> was retrieved.
             body:
               schema: <<resourcePathName | !singularize>> # e.g. user
+              example: <<example>>
           404:
             description: If the <<resourcePathName | !singularize>> was not found.
       put:
         description: Update the identified <<resourcePathName | !singularize>>.
         body:
           schema: <<resourcePathName | !singularize>>
+          example: <<example>>
         responses:
           204:
             description: If the identified <<resourcePathName | !singularize>> was updated.
@@ -68,4 +70,4 @@ resourceTypes:
 /licenses:
   type: {collection: {exampleId: 23, exampleGet: !include examples/licenses.json, examplePost: !include examples/license-new.json}}
   /{id}:
-    type: member
+    type: {member: {example: !include examples/license.json}}
