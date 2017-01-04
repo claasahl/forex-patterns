@@ -19,6 +19,11 @@
 			<version>${version-jax-rs}</version>
 		</dependency>
 		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>${version-gson}</version>
+		</dependency>
+		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>${version-junit}</version>
@@ -79,6 +84,27 @@
 				<groupId>org.raml.plugins</groupId>
 				<artifactId>raml-jaxrs-maven-plugin</artifactId>
 				<version>${version-jax-rs-raml}</version>
+				<configuration>
+					<!-- Optionally configure outputDirectory if you don't like the default 
+						value: ${project.build.directory}/generated-sources/raml-JAX-RS -->
+					<basePackageName>com.acme.api</basePackageName>
+					<jaxrsVersion>2.0</jaxrsVersion>
+					<jsonMapper>gson</jsonMapper>
+					<removeOldOutput>true</removeOldOutput>
+					<!-- Optionally set extensions to a list of fully qualified names of 
+						classes that implement org.raml.jaxrs.codegen.core.ext.GeneratorExtension -->
+					<!-- for example: <extensions> <param>com.abc.AuthorizationAnnotationExtension</param> 
+						<param>com.abc.ParameterFilterExtension</param> </extensions> Custom annotator 
+						for json schema to pojo convertor <customAnnotator>com.abc.MyCustomAnnotator</customAnnotator> -->
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+						<phase>generate-sources</phase>
+					</execution>
+				</executions>
 			</plugin>
 			<plugin>
 				<!-- https://www.eclipse.org/jetty/documentation/current/jetty-maven-plugin.html -->
@@ -184,6 +210,7 @@
 		<version-frontend>1.3</version-frontend>
 		<version-node-js>v7.3.0</version-node-js>
 		<version-minify>1.7.6</version-minify>
+		<version-gson>2.8.0</version-gson>
 		<version-jax-servlet>3.1.0</version-jax-servlet>
 		<version-jax-rs>2.0.1</version-jax-rs>
 		<version-jax-rs-raml>1.3.4</version-jax-rs-raml>

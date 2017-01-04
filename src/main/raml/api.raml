@@ -2,14 +2,7 @@
 title: A CRUD API for licenses.
 version: v1
 mediaType: application/json
-protocols: HTTPS
 baseUri: http://localhost:8080/patterns/api/{version}/
-uriParameters:
-  version: 
-    displayName: Version
-    description: Identifies the API's version.
-    example: v1
-    enum: v1
 schemas: 
   - licenses: !include licenses.json
   - license: !include license.json
