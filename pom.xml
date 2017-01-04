@@ -85,24 +85,21 @@
 				<artifactId>raml-jaxrs-maven-plugin</artifactId>
 				<version>${version-jax-rs-raml}</version>
 				<configuration>
-					<!-- Optionally configure outputDirectory if you don't like the default 
-						value: ${project.build.directory}/generated-sources/raml-JAX-RS -->
-					<basePackageName>com.acme.api</basePackageName>
 					<jaxrsVersion>2.0</jaxrsVersion>
 					<jsonMapper>gson</jsonMapper>
 					<removeOldOutput>true</removeOldOutput>
-					<!-- Optionally set extensions to a list of fully qualified names of 
-						classes that implement org.raml.jaxrs.codegen.core.ext.GeneratorExtension -->
-					<!-- for example: <extensions> <param>com.abc.AuthorizationAnnotationExtension</param> 
-						<param>com.abc.ParameterFilterExtension</param> </extensions> Custom annotator 
-						for json schema to pojo convertor <customAnnotator>com.abc.MyCustomAnnotator</customAnnotator> -->
 				</configuration>
 				<executions>
 					<execution>
+						<id>raml-to-jaxrs-api-v1</id>
 						<goals>
 							<goal>generate</goal>
 						</goals>
 						<phase>generate-sources</phase>
+						<configuration>
+							<sourceDirectory>${basedir}/src/main/raml/v1</sourceDirectory>
+							<basePackageName>de.claas.forex.api.v1</basePackageName>
+						</configuration>
 					</execution>
 				</executions>
 			</plugin>
