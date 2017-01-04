@@ -4,9 +4,9 @@ version: v12
 mediaType: application/json
 baseUri: http://localhost:8080/patterns/api/{version}/
 schemas: 
-  - licenses: !include licenses.json
-  - license: !include license.json
-  - licenseNew: !include license-new.json
+  - licenses: !include schemas/licenses.json
+  - license: !include schemas/license.json
+  - licenseNew: !include schemas/license-new.json
 resourceTypes:
   - collection:
       usage: This resourceType should be used for any collection of items.
@@ -66,6 +66,6 @@ resourceTypes:
           404:
             description: If the <<resourcePathName | !singularize>> was not found.
 /licenses:
-  type: {collection: {exampleId: 23, exampleGet: !include licenses-example.json, examplePost: !include license-new-example.json}}
+  type: {collection: {exampleId: 23, exampleGet: !include examples/licenses.json, examplePost: !include examples/license-new.json}}
   /{id}:
     type: member
