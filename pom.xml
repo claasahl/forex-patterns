@@ -29,6 +29,24 @@
 			<version>${version-junit}</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>rest-assured</artifactId>
+			<version>${version-rest-assured}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>guru.nidi.raml</groupId>
+			<artifactId>raml-tester</artifactId>
+			<version>${version-raml-tester}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.raml</groupId>
+			<artifactId>raml-parser</artifactId>
+			<version>${version-raml-parser}</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 	<build>
 		<!-- do not forget: plugin for generating JAX-RS from RAML -->
@@ -203,6 +221,9 @@
 	</build>
 	<properties>
 		<version-junit>4.12</version-junit>
+		<version-rest-assured>3.0.1</version-rest-assured>
+		<version-raml-tester>0.8.12</version-raml-tester>
+		<version-raml-parser>0.8.17</version-raml-parser>
 		<version-find-bugs>3.0.4</version-find-bugs>
 		<version-jetty>9.4.0.v20161208</version-jetty>
 		<version-frontend>1.3</version-frontend>
