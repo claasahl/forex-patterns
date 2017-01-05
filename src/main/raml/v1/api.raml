@@ -3,6 +3,10 @@ title: A CRUD API for licenses.
 version: v12
 mediaType: application/json
 baseUri: http://localhost:8080/patterns/api/{version}/
+documentation: 
+  -
+    title: Getting Started
+    content: TBD
 schemas: 
   - licenses: !include schemas/licenses.json
   - license: !include schemas/license.json
@@ -70,4 +74,10 @@ resourceTypes:
 /licenses:
   type: {collection: {exampleId: 23, exampleGet: !include examples/licenses.json, examplePost: !include examples/license-new.json}}
   /{id}:
+    uriParameters: 
+      id: 
+        displayName: Identifier
+        description: Identifies a single license.
+        type: integer
+        example: 23
     type: {member: {example: !include examples/license.json}}
